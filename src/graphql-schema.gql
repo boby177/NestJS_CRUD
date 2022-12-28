@@ -1,0 +1,15 @@
+# ------------------------------------------------------
+# THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
+# ------------------------------------------------------
+
+type Employee {
+  firstName: String!
+  id: String!
+  lastname: String!
+  designation: String!
+  city: String
+}
+
+type Query {
+  getAllEmployees: [Employee!]!
+}
