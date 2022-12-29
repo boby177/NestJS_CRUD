@@ -1,6 +1,7 @@
 import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm/repository/Repository';
+import { EmployeeCreateDTO } from './dto/create-employee.input';
 import { Employee } from './entities/employee.entity';
 
 @Injectable()
@@ -14,7 +15,8 @@ export class EmployeeService {
     return this.employeeRepository.find();
   }
 
-  async create(): Promise<Employee> {
-    return;
+  async create(employee: EmployeeCreateDTO): Promise<Employee> {
+    let emp = this.employeeRepository.create(employee);
+    return this.employeeRepository.save(emp);
   }
 }
