@@ -6,10 +6,10 @@ import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
 export class Employee {
   @Field()
   @PrimaryGeneratedColumn('uuid')
-  firstName: string;
+  id: string;
   @Field()
   @Column()
-  id: string;
+  firstName: string;
   @Field()
   @Column()
   lastname: string;
