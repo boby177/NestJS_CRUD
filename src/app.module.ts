@@ -5,10 +5,12 @@ import { GraphQLModule } from '@nestjs/graphql';
 import { join } from 'path';
 import { ApolloDriver } from '@nestjs/apollo';
 import { TypeOrmModule } from '@nestjs/typeorm';
+import { ProjectModule } from './project/project.module';
 
 @Module({
   imports: [
     EmployeeModule,
+    ProjectModule,
     GraphQLModule.forRoot({
       autoSchemaFile: join(process.cwd(), 'src/graphql-schema.gql'),
       driver: ApolloDriver,
