@@ -17,18 +17,25 @@ export class ProjectService {
   }
 
   async findAll(): Promise<Project[]> {
-    return this.projectRepository.find();
+    return this.projectRepository.find({
+      relations: ['employees'],
+    });
   }
 
   async findOne(id: string): Promise<Project> {
-    return this.projectRepository.findOne({ where: { id } });
+    return this.projectRepository.findOne({
+      where: { id },
+      relations: ['employees'],
+    });
   }
 
   update(id: string, updateProjectInput: UpdateProjectInput) {
-    return `This action updates a #${id} project`;
+    let project: Project = this.projectRepository.create(updateProjectInput);
+    project.id = id;
+    return this.projectRepository.save(project);
   }
 
-  remove(id: number) {
-    return `This action removes a #${id} project`;
+  remove(id: string) {
+    
   }
 }
